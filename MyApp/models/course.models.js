@@ -5,7 +5,7 @@ const SessionSubSchema = mongoose.Schema ({
         type: Number,
         required: true,
         default:1
-        },
+    },
     startTime: {
         type: Number,
         required: true
@@ -20,23 +20,22 @@ const SessionSubSchema = mongoose.Schema ({
     }
 });
 
-
 const CourseSchema = mongoose.Schema ({
-        courseName: {
-            type: String,
-            required: [true, "Please enter the course name"],
-        },
-        courseTitle: {
-            type: String,
-            required: [true, "Please enter the course title"],
-        },
-        sessions: {
-            type:[SessionSubSchema]
-        },
+    courseName: {
+        type:String,
+        required: [true, "Please enter the course name"],
     },
-    {
-        timestamps: true
-    });
+    courseTitle: {
+        type:String,
+        required: [true, "Please enter the course title"],
+    },
+    sessions: {
+        type:[SessionSubSchema]
+    },
+},
+{ 
+    timestamps: true
+});
 
 const Course = mongoose.model("Course", CourseSchema);
 
