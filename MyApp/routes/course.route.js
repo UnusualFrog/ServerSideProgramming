@@ -8,15 +8,15 @@ const {getCourses, getCouseById, getCouseByName, getAllCoursesByName, insertCour
 courseRouter.get ('/', getCourses);
 courseRouter.get ('/id=:id', getCouseById);
 courseRouter.get ('/name=:name', getCouseByName);
-// courseRouter.get ('/name=:name', getAllCoursesByName);
+courseRouter.get ('/nameAll=:name', getAllCoursesByName);
 courseRouter.post ('/', insertCourse);
 courseRouter.put ('/name=:name', updateCourseByName);
 courseRouter.put ('/id=:id', updateCourseByID);
-// courseRouter.put ('/name=:name', updateAllCoursesByName);
-// courseRouter.put ('/', updateAllCourses);
+courseRouter.put ('/nameAll=:name', updateAllCoursesByName);
+courseRouter.put ('/', updateAllCourses);
 courseRouter.delete ('/name=:name', deleteCourseByName);
 courseRouter.delete ('/id=:id', deleteCourseByID);
-// courseRouter.delete ('/name=:name', deleteAllCourseByName);
-// courseRouter.delete ('', deleteAllCourses);
+courseRouter.delete ('/nameAll=:name', deleteAllCourseByName);
+courseRouter.delete ('', deleteAllCourses);
 
 module.exports = courseRouter;

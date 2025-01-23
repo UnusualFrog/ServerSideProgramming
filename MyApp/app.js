@@ -28,5 +28,5 @@ app.get('/', (req, res, next) => {
    console.log("test");
    next()
 },(req, res)=>{
-  res.send('Hello Chain!')
+  res.send('Hello Chained Get Request!')
 })
