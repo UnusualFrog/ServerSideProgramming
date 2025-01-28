@@ -1,7 +1,7 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const courseRoute = require ("./routes/course.route.js");
-// const Course = require('./models/course.models.js')
+// const Course = require('./models/course.models.js') DELETE ME
 
 const app = express()
 const port = 3000
