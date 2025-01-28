@@ -6,6 +6,7 @@ const courseRoute = require ("./routes/course.route.js");
 const app = express()
 const port = 3000
 
+// Connect to Cloud DB
 mongoose.connect('mongodb+srv://juliaforward:easypass1@home13.vxafn.mongodb.net/?retryWrites=true&w=majority&appName=home13',{ dbName: 'home13'})
     .then(() => {
       console.log("Connected to the database!");
@@ -17,13 +18,15 @@ mongoose.connect('mongodb+srv://juliaforward:easypass1@home13.vxafn.mongodb.net/
       console.log("Failed to connect to the database.");
     });
 
+// Use cors
 const cors = require('cors');
 app.use(cors());
-
+// Use Express
 app.use(express.json());
+// Use the courses route for making requests, modify to change url path
 app.use ("/api/courses", courseRoute);
 
-// Chained get request
+// Chained get request for default get request
 app.get('/', (req, res, next) => {
    console.log("test");
    next()
