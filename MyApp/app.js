@@ -1,7 +1,9 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const courseRoute = require ("./routes/course.route.js");
+const studentRoute = require ("./routes/student.route.js")
 // const Course = require('./models/course.models.js') DELETE ME
+//const Student = require("./models/student.models.js")
 
 const app = express()
 const port = 3000
@@ -25,6 +27,7 @@ app.use(cors());
 app.use(express.json());
 // Use the courses route for making requests, modify to change url path
 app.use ("/api/courses", courseRoute);
+app.use ("/api/students", studentRoute);
 
 // Chained get request for default get request
 app.get('/', (req, res, next) => {
@@ -33,3 +36,6 @@ app.get('/', (req, res, next) => {
 },(req, res)=>{
   res.send('Hello Chained Get Request!')
 })
+
+
+
