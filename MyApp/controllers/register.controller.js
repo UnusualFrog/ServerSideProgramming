@@ -3,7 +3,7 @@ const Course = require ("../models/course.models.js");
 
 const registerCourseStudent = async (req, res) => {
     try {
-        const course = await Course.findById (req.params.id);
+        const course = await Course.findById (req.params.courseID);
         console.log(course.courseName);
 
         const student = await Student.findById(req.params.studentID);
