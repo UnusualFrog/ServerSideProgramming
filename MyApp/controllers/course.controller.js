@@ -103,6 +103,8 @@ const updateAllCourses = async (req, res) => {
     }
 }
 
+
+
 // DELETE
 // Delete first course by name
 const deleteCourseByName = async (req, res) => {

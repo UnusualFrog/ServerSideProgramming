@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+CourseSchema = mongoose.CourseSchema;
 
 const StudentSchema = mongoose.Schema({
     schoolID: {
@@ -64,6 +65,10 @@ const StudentSchema = mongoose.Schema({
     program: {
         type: String,
         required: [true, "Please enter a program"]
+    },
+    courses: {
+        type: [String],
+        default: []
     }
 })
 

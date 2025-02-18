@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+StudentSchema = mongoose.StudentSchema;
 
 const SessionSubSchema = mongoose.Schema ({
     day: {
@@ -32,6 +33,10 @@ const CourseSchema = mongoose.Schema ({
     sessions: {
         type:[SessionSubSchema]
     },
+    students: {
+        type: [String],
+        default: []
+    }
 },
 { 
     timestamps: true

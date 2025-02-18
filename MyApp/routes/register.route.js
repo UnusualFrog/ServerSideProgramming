@@ -1,0 +1,10 @@
+const express = require("express");
+const registerRouter = express.Router ();
+
+const {registerCourseStudent} =
+    require ("../controllers/register.controller.js");
+
+registerRouter.put ('/id=:id/studentID=:studentID', registerCourseStudent);
+
+
+module.exports = registerRouter;
