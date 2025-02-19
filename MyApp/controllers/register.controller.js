@@ -19,10 +19,10 @@ const registerCourseStudent = async (req, res) => {
             throw new Error(student.firstName + " already registered to " + course.courseName)
         }
         
-        checkConflicts(student, course)
-        // if(checkConflicts(student, course)) {
-        //     throw new Error("Schedule Conflict :(")
-        // }
+        if(await checkConflicts(student, course) == true) {
+            throw new Error("Schedule Conflict :(");
+        }
+        console.log("Continue past point of end")
 
         // Add relationships and save changes
         course.students.push(student.id)
@@ -55,12 +55,42 @@ const checkConflicts = async (student, newCourse) => {
             console.log(currentCourse.courseName);
 
             // Loop through sessions of current course
-            for (currentCourseSessions of currentCourse.sessions) {
+            for (currentCourseSession of currentCourse.sessions) {
                 console.log("**************")
-                console.log(currentCourseSessions)
+                console.log(currentCourseSession)
+
+                if (newCourseSession.day == currentCourseSession.day) {
+                    console.log("MATCH DAYS!")
+
+                    let newCourseSessionStart = (Math.floor(newCourseSession.startTime / 100) * 60) + newCourseSession.startTime % 100;
+                    let currentCourseSessionStart = (Math.floor(currentCourseSession.startTime / 100) * 60) + currentCourseSession.startTime % 100;
+                    console.log(newCourseSessionStart)
+                    console.log(currentCourseSessionStart)
+
+                    let newCourseSessionEnd = newCourseSessionStart + newCourseSession.duration;
+                    let currentCourseSessionEnd = currentCourseSessionStart + currentCourseSession.duration;
+                    console.log(newCourseSessionEnd);
+                    console.log(currentCourseSessionEnd);
+
+                    if (newCourseSessionStart == currentCourseSessionStart) {
+                        console.log("conflict! same start time");
+                        return true;
+                    }
+
+                    if (newCourseSessionStart > currentCourseSessionStart  && newCourseSessionStart < currentCourseSessionEnd) {
+                        console.log("conflict! new in between start and end of current")
+                        return true;
+                    }
+
+                    if ( currentCourseSessionStart > newCourseSessionStart && currentCourseSessionStart < newCourseSessionEnd) {
+                        console.log("conflict! current in between start and end of new")
+                        return true;
+                    }
+                }
             }
         }
     }
+    return false;
 }
 
 module.exports = {
