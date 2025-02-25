@@ -4,11 +4,13 @@ const Course = require ("../models/course.models.js");
 const registerCourseStudent = async (req, res) => {
     try {
         // Get objects from params
-        const course = await Course.findById (req.params.courseID);
-        // console.log(course.courseName);
+        // const course = await Course.findById (req.params.courseID);
+        const course = await Course.findOne({ courseName: req.params.courseName });
+        console.log(course.courseName);
 
-        const student = await Student.findById(req.params.studentID);
-        // console.log(student.firstName)
+        // const student = await Student.findById(req.params.studentID);
+        const student = await Student.findOne({ schoolID: req.params.schoolID });
+        console.log(student.firstName)
 
         // Check for duplicate entries 
         if (course.students.includes(student.id)) {

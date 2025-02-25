@@ -4,7 +4,7 @@ const registerRouter = express.Router ();
 const {registerCourseStudent} =
     require ("../controllers/register.controller.js");
 
-registerRouter.put ('/courseID=:courseID/studentID=:studentID', registerCourseStudent);
+registerRouter.put ('/courseName=:courseName/schoolID=:schoolID', registerCourseStudent);
 
 
 module.exports = registerRouter;
