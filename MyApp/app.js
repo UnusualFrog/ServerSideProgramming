@@ -3,6 +3,7 @@ const mongoose = require('mongoose')
 const courseRoute = require ("./routes/course.route.js");
 const studentRoute = require ("./routes/student.route.js")
 const registerRoute = require ("./routes/register.route.js")
+const bergRoute = require ("./routes/berg.route.js")
 
 const app = express()
 const port = 3000
@@ -28,6 +29,7 @@ app.use(express.json());
 app.use ("/api/courses", courseRoute);
 app.use ("/api/students", studentRoute);
 app.use ("/api/register", registerRoute);
+app.use ("/api/berg/split", bergRoute);
 
 // Chained get request for default get request
 app.get('/', (req, res, next) => {

@@ -10,16 +10,16 @@ const BergSchema = mongoose.Schema ({
         required: [true, "Please enter a callsign"],
         default: "C-GCNA"
     },
-    latitiude: {
-        type: Double,
+    latitude: {
+        type: Number,
         required: [true, "Please enter a latititude"]
     },
     longitude: {
-        type: Double,
+        type: Number,
         required: [true, "Please enter a longitude"]
     },
     altitude: {
-        type: Double,
+        type: Number,
         required: [true, "Please enter an altitude"]
     },
     timestamp: {
@@ -27,7 +27,7 @@ const BergSchema = mongoose.Schema ({
         required: [true, "Please enter a timestamp"]
     },
     bergId: {
-        type: Number,
+        type: String,
         required: [true, "Please enter a berg ID"]
     },
     iceType: {
@@ -42,7 +42,7 @@ const BergSchema = mongoose.Schema ({
         default: "Calm"
     },
     seaTemp: {
-        type: Double
+        type: Number
     }, 
     iceGrounded: {
         type: Boolean,
